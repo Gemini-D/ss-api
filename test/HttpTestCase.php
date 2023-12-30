@@ -28,14 +28,14 @@ use function Hyperf\Support\make;
  */
 abstract class HttpTestCase extends TestCase
 {
+    public static bool $init = false;
+
+    public static string $token = '';
+
     /**
      * @var Testing\Client
      */
     protected $client;
-
-    protected bool $init = false;
-
-    protected string $token = '';
 
     public function __construct($name = null, array $data = [], $dataName = '')
     {
@@ -51,8 +51,8 @@ abstract class HttpTestCase extends TestCase
 
     protected function setUp(): void
     {
-        if (! $this->init) {
-            $this->init = true;
+        if (! self::$init) {
+            self::$init = true;
 
             di()->set(WeChatService::class, $chat = Mockery::mock(WeChatService::class));
             $chat->shouldReceive('login')->with('1234567890')->andReturn(['openid' => 'ohjUY0TB_onjcaH2ia06HgGOC4CY']);
@@ -61,7 +61,7 @@ abstract class HttpTestCase extends TestCase
                 'code' => '1234567890',
             ]);
 
-            $this->token = $res['data']['token'];
+            self::$token = $res['data']['token'];
         }
     }
 

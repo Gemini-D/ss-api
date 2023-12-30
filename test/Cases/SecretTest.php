@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace HyperfTest\Cases;
 
+use App\Model\Secret;
 use App\Service\SubService\UserAuth;
 use HyperfTest\HttpTestCase;
 
@@ -19,11 +20,15 @@ use HyperfTest\HttpTestCase;
  * @internal
  * @coversNothing
  */
-class UserTest extends HttpTestCase
+class SecretTest extends HttpTestCase
 {
-    public function testUserInfo()
+    public function testSecretCreate()
     {
-        $res = $this->get('/user/info', [], [
+        Secret::query()->where('id', 1)->where('secret', md5('1234'))->delete();
+
+        $res = $this->json('/secret/create', [
+            'secret' => '1234',
+        ], [
             UserAuth::X_TOKEN => self::$token,
         ]);
 
