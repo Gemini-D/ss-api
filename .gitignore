@@ -10,4 +10,4 @@ vendor/
 .env
 .DS_Store
 *.cache
-*.lock
+build.sh
