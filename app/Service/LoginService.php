@@ -12,28 +12,34 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use EasyWeChat\MiniApp\Contracts\Application;
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
+use App\Schema\LoginSchema;
+use App\Service\Dao\UserDao;
+use app\Service\SubService\UserAuth;
+use app\Service\SubService\WeChatService;
 use Han\Utils\Service;
-use Hyperf\Codec\Json;
 use Hyperf\Di\Annotation\Inject;
 
 class LoginService extends Service
 {
     #[Inject]
-    protected Application $application;
+    protected WeChatService $chat;
 
-    public function login(string $code)
+    #[Inject]
+    protected UserDao $dao;
+
+    public function login(string $code): LoginSchema
     {
-        var_dump($this->application->getAccount());
-        $result = $this->application->getClient()->get('/sns/jscode2session', [
-            'query' => [
-                'appid' => $this->application->getAccount()->getAppId(),
-                'secret' => $this->application->getAccount()->getSecret(),
-                'js_code' => $code,
-                'grant_type' => 'authorization_code',
-            ],
-        ]);
+        $result = $this->chat->login($code);
+        if (! $result['openid']) {
+            throw new BusinessException(ErrorCode::OAUTH_FAILED);
+        }
 
-        return Json::decode($result->getContent());
+        $model = $this->dao->firstOrCreate($result['openid']);
+
+        $userAuth = UserAuth::instance()->init($model);
+
+        return new LoginSchema($userAuth->getToken());
     }
 }
