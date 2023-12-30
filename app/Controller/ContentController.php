@@ -43,6 +43,21 @@ class ContentController extends Controller
         return $this->response->success(new SavedSchema($result));
     }
 
+    #[SA\Get('/content/list', summary: '内容列表', tags: ['内容管理'])]
+    #[SA\RequestBody(content: new SA\JsonContent(properties: [
+        new SA\Property(property: 'secret_id', description: '密码 ID', type: 'integer', rules: 'required|integer'),
+    ]))]
+    #[SA\Response(response: '200', content: new SA\JsonContent(ref: '#/components/schemas/ContentListSchema'))]
+    public function list(SwaggerRequest $request)
+    {
+        $secretId = (int) $request->input('secret_id');
+        $userAuth = UserAuth::instance();
+
+        $result = $this->service->list($secretId, $userAuth);
+
+        return $this->response->success($result);
+    }
+
     #[SA\Post('/content/info', summary: '内容详情', tags: ['内容管理'])]
     #[SA\RequestBody(content: new SA\JsonContent(properties: [
         new SA\Property(property: 'id', description: '内容 ID', type: 'integer', rules: 'required|integer'),

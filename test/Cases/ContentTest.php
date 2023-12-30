@@ -45,4 +45,15 @@ class ContentTest extends HttpTestCase
 
         $this->assertSame(0, $res['code']);
     }
+
+    public function testContentList()
+    {
+        $res = $this->get('/content/list', [
+            'secret_id' => 1,
+        ], [
+            UserAuth::X_TOKEN => self::$token,
+        ]);
+
+        $this->assertSame(0, $res['code']);
+    }
 }

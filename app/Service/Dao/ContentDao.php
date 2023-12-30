@@ -16,6 +16,7 @@ use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
 use App\Model\Content;
 use Han\Utils\Service;
+use Hyperf\Database\Model\Collection;
 
 class ContentDao extends Service
 {
@@ -27,5 +28,13 @@ class ContentDao extends Service
         }
 
         return $model;
+    }
+
+    /**
+     * @return Collection<int, Content>
+     */
+    public function findBySecretId(int $secretId): Collection
+    {
+        return Content::query()->where('secret_id', $secretId)->get();
     }
 }

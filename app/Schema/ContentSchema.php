@@ -51,6 +51,7 @@ class ContentSchema implements JsonSerializable
         $this->userId = $model->user_id;
         $this->secretId = $model->secret_id;
         $this->title = $model->title;
+        $this->content = null;
         if ($withContent) {
             $this->content = $model->getContent();
         }
