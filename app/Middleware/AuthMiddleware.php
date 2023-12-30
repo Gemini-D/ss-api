@@ -37,7 +37,7 @@ class AuthMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        // TODO: 验证 Token
+        // 验证 Token
         $token = $request->getHeaderLine(UserAuth::X_TOKEN);
         if (! $token) {
             throw new BusinessException(ErrorCode::TOKEN_INVALID);
