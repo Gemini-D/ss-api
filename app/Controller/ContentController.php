@@ -42,4 +42,19 @@ class ContentController extends Controller
 
         return $this->response->success(new SavedSchema($result));
     }
+
+    #[SA\Post('/content/info', summary: '内容详情', tags: ['内容管理'])]
+    #[SA\RequestBody(content: new SA\JsonContent(properties: [
+        new SA\Property(property: 'id', description: '内容 ID', type: 'integer', rules: 'required|integer'),
+    ]))]
+    #[SA\Response(response: '200', content: new SA\JsonContent(ref: '#/components/schemas/ContentSchema'))]
+    public function info(SwaggerRequest $request)
+    {
+        $id = (int) $request->input('id');
+        $userAuth = UserAuth::instance();
+
+        $result = $this->service->info($id, $userAuth);
+
+        return $this->response->success($result);
+    }
 }

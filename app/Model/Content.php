@@ -13,6 +13,8 @@ declare(strict_types=1);
 namespace App\Model;
 
 use App\Constants\ContentType;
+use App\Service\SubService\Encrypter;
+use App\Service\SubService\UserAuth;
 
 /**
  * @property int $id
@@ -40,4 +42,10 @@ class Content extends Model
      * The attributes that should be cast to native types.
      */
     protected array $casts = ['id' => 'integer', 'user_id' => 'integer', 'secret_id' => 'integer', 'type' => ContentType::class, 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function getContent()
+    {
+        $secret = UserAuth::instance()->build()->getSecret();
+        return di()->get(Encrypter::class)->decrypt($this->content, $secret);
+    }
 }

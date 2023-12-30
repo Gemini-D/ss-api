@@ -24,10 +24,21 @@ class ContentTest extends HttpTestCase
     public function testContentSave()
     {
         $res = $this->json('/content/save', [
-            'id' => 0,
+            'id' => 1,
             'secret_id' => 1,
             'title' => 'Hello',
             'content' => 'World',
+        ], [
+            UserAuth::X_TOKEN => self::$token,
+        ]);
+
+        $this->assertSame(0, $res['code']);
+    }
+
+    public function testContentInfo()
+    {
+        $res = $this->json('/content/info', [
+            'id' => 1,
         ], [
             UserAuth::X_TOKEN => self::$token,
         ]);
