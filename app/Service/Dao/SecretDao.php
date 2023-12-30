@@ -31,6 +31,10 @@ class SecretDao extends Service
 
     public function create(string $secret, int $userId): Secret
     {
+        if($this->firstBySecret($secret, $userId)){
+            throw new BusinessException(ErrorCode::SECRET_ALREADY_EXIST);
+        }
+
         $secret = md5($secret);
 
         $model = new Secret();
