@@ -16,6 +16,7 @@ use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
 use App\Schema\SecretSchema;
 use App\Service\Dao\SecretDao;
+use App\Service\SubService\UserAuth;
 use Han\Utils\Service;
 use Hyperf\Di\Annotation\Inject;
 
@@ -37,6 +38,8 @@ class SecretService extends Service
         if (! $model) {
             throw new BusinessException(ErrorCode::SECRET_NOT_EXIST);
         }
+
+        UserAuth::instance()->save($secret);
 
         return new SecretSchema($model);
     }

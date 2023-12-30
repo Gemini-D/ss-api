@@ -18,6 +18,7 @@ use App\Constants\ContentType;
  * @property int $id
  * @property int $user_id 用户 ID
  * @property int $secret_id 密码 ID
+ * @property string $title 标题
  * @property string $content 内容
  * @property ContentType $type 类型 0 文本 1 音频 2 视频
  * @property \Carbon\Carbon $created_at
@@ -33,7 +34,7 @@ class Content extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected array $fillable = ['id', 'user_id', 'secret_id', 'content', 'type', 'created_at', 'updated_at'];
+    protected array $fillable = ['id', 'user_id', 'secret_id', 'title', 'content', 'type', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be cast to native types.

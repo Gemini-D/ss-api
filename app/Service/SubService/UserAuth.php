@@ -31,6 +31,8 @@ class UserAuth
 
     protected string $token = '';
 
+    protected ?string $secret = null;
+
     public function init(User $user): static
     {
         $token = md5($user->id . ':' . uniqid());
@@ -39,6 +41,32 @@ class UserAuth
 
         $this->token = $token;
         $this->userId = $user->id;
+
+        return $this;
+    }
+
+    public function save(string $secret): static
+    {
+        $this->secret = $secret;
+
+        di()->get(Redis::class)->set(
+            self::PREFIX . $this->token,
+            Json::encode(['id' => $this->userId, 'secret' => $this->secret]),
+            86400
+        );
+
+        return $this;
+    }
+
+    public function build(): static
+    {
+        if (! $this->userId) {
+            throw new BusinessException(ErrorCode::TOKEN_INVALID);
+        }
+
+        if (! $this->secret) {
+            throw new BusinessException(ErrorCode::TOKEN_INVALID);
+        }
 
         return $this;
     }
@@ -56,6 +84,7 @@ class UserAuth
         }
 
         $this->userId = $data['id'];
+        $this->secret = $data['secret'] ?? null;
         $this->token = $token;
 
         return $this;
@@ -69,5 +98,10 @@ class UserAuth
     public function getToken(): string
     {
         return $this->token;
+    }
+
+    public function getSecret(): ?string
+    {
+        return $this->secret;
     }
 }

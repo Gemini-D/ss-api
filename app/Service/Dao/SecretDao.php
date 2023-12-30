@@ -12,11 +12,23 @@ declare(strict_types=1);
 
 namespace App\Service\Dao;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use App\Model\Secret;
 use Han\Utils\Service;
 
 class SecretDao extends Service
 {
+    public function first(int $id, bool $throw = false): ?Secret
+    {
+        $model = Secret::findFromCache($id);
+        if (! $model && $throw) {
+            throw new BusinessException(ErrorCode::SECRET_NOT_EXIST);
+        }
+
+        return $model;
+    }
+
     public function create(string $secret, int $userId): Secret
     {
         $secret = md5($secret);
