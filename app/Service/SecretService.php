@@ -31,7 +31,7 @@ class SecretService extends Service
         return true;
     }
 
-    public function check(string $secret, int $userId): ?SecretSchema
+    public function check(string $secret, int $userId): SecretSchema
     {
         $model = $this->dao->firstBySecret($secret, $userId);
         if (! $model) {
