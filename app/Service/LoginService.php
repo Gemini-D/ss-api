@@ -24,6 +24,7 @@ class LoginService extends Service
 
     public function login(string $code)
     {
+        var_dump($this->application->getAccount());
         $result = $this->application->getClient()->get('/sns/jscode2session', [
             'query' => [
                 'appid' => $this->application->getAccount()->getAppId(),

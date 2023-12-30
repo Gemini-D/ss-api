@@ -15,6 +15,7 @@ namespace App\Controller;
 use App\Service\LoginService;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\Swagger\Annotation as SA;
+use Hyperf\Swagger\Request\SwaggerRequest;
 
 #[SA\HyperfServer('http')]
 class LoginController extends Controller
@@ -27,8 +28,12 @@ class LoginController extends Controller
         new SA\Property(property: 'code', description: '微信授权码', type: 'string', rules: 'required|string'),
     ]))]
     #[SA\Response(response: '200', content: new SA\JsonContent(ref: '#/components/schemas/LoginSchema'))]
-    public function login()
+    public function login(SwaggerRequest $request)
     {
-        return $this->response->success();
+        $code = (string) $request->input('code');
+
+        $result = $this->service->login($code);
+
+        return $this->response->success($result);
     }
 }

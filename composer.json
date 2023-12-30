@@ -47,6 +47,7 @@
         "hyperf/swagger": "3.1.*",
         "hyperf/utils": "3.1.*",
         "hyperf/validation": "3.1.*",
+        "limingxinleo/easywechat-classmap": "^1.0",
         "limingxinleo/hyperf-utils": "^3.9",
         "w7corp/easywechat": "^6.13"
     },
