@@ -16,8 +16,8 @@ use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
 use App\Schema\LoginSchema;
 use App\Service\Dao\UserDao;
-use app\Service\SubService\UserAuth;
-use app\Service\SubService\WeChatService;
+use App\Service\SubService\UserAuth;
+use App\Service\SubService\WeChatService;
 use Han\Utils\Service;
 use Hyperf\Di\Annotation\Inject;
 
