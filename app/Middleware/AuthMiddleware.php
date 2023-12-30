@@ -12,6 +12,9 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
+use App\Service\SubService\UserAuth;
 use Hyperf\HttpServer\Router\Dispatched;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -30,12 +33,17 @@ class AuthMiddleware implements MiddlewareInterface
         /** @var Dispatched $dispatched */
         $dispatched = $request->getAttribute(Dispatched::class);
         $route = (string) $dispatched->handler?->route;
-        if (in_array($route, ['/login'])) {
+        if (in_array($route, ['/login', '/'], true)) {
             return $handler->handle($request);
         }
 
         // TODO: 验证 Token
-        var_dump('xxx');
+        $token = $request->getHeaderLine(UserAuth::X_TOKEN);
+        if (! $token) {
+            throw new BusinessException(ErrorCode::TOKEN_INVALID);
+        }
+
+        UserAuth::instance()->load($token);
 
         return $handler->handle($request);
     }
