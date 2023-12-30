@@ -24,7 +24,7 @@ class SecretTest extends HttpTestCase
 {
     public function testSecretCreate()
     {
-        Secret::query()->where('id', 1)->where('secret', md5('1234'))->delete();
+        Secret::query()->where('user_id', 1)->where('secret', md5('1234'))->delete();
 
         $res = $this->json('/secret/create', [
             'secret' => '1234',
