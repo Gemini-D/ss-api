@@ -21,6 +21,8 @@ class UserAuth
 {
     use StaticInstance;
 
+    public const X_TOKEN = 'x-token';
+
     public const PREFIX = 'auth:';
 
     protected int $userId = 0;

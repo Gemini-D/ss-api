@@ -12,5 +12,7 @@ declare(strict_types=1);
 return [
     'http' => [
         Han\Utils\Middleware\RequestHandledDebugMiddleware::class,
+        Hyperf\Validation\Middleware\ValidationMiddleware::class,
+        App\Middleware\AuthMiddleware::class,
     ],
 ];
