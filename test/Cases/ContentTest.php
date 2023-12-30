@@ -37,7 +37,7 @@ class ContentTest extends HttpTestCase
 
     public function testContentInfo()
     {
-        $res = $this->json('/content/info', [
+        $res = $this->get('/content/info', [
             'id' => 1,
         ], [
             UserAuth::X_TOKEN => self::$token,
