@@ -18,14 +18,14 @@ class Encrypter extends Service
 {
     public function encrypt(string $content, string $secret): string
     {
-        $encrypt = new \Illuminate\Encryption\Encrypter(md5($secret), 'AES-256-CBC');
+        $encrypt = new \Illuminate\Encryption\Encrypter(md5('secret:' . $secret), 'AES-256-CBC');
 
         return $encrypt->encryptString($content);
     }
 
     public function decrypt(string $content, string $secret): string
     {
-        $encrypt = new \Illuminate\Encryption\Encrypter(md5($secret), 'AES-256-CBC');
+        $encrypt = new \Illuminate\Encryption\Encrypter(md5('secret:' . $secret), 'AES-256-CBC');
 
         return $encrypt->decryptString($content);
     }
