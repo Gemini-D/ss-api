@@ -12,6 +12,9 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
+use App\Schema\SecretSchema;
 use App\Service\Dao\SecretDao;
 use Han\Utils\Service;
 use Hyperf\Di\Annotation\Inject;
@@ -26,5 +29,15 @@ class SecretService extends Service
         $this->dao->create($secret, $userId);
 
         return true;
+    }
+
+    public function check(string $secret, int $userId): ?SecretSchema
+    {
+        $model = $this->dao->firstBySecret($secret, $userId);
+        if (! $model) {
+            throw new BusinessException(ErrorCode::SECRET_NOT_EXIST);
+        }
+
+        return new SecretSchema($model);
     }
 }

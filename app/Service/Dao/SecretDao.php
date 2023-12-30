@@ -28,4 +28,11 @@ class SecretDao extends Service
 
         return $model;
     }
+
+    public function firstBySecret(string $secret, int $userId): ?Secret
+    {
+        return Secret::query()->where('user_id', $userId)
+            ->where('secret', md5($secret))
+            ->first();
+    }
 }

@@ -39,4 +39,19 @@ class SecretController extends Controller
 
         return $this->response->success(new SavedSchema($result));
     }
+
+    #[SA\Post('/secret/check', summary: '验证密码', tags: ['密码管理'])]
+    #[SA\RequestBody(content: new SA\JsonContent(properties: [
+        new SA\Property(property: 'secret', description: '密码', type: 'string', rules: 'required|string'),
+    ]))]
+    #[SA\Response(response: '200', content: new SA\JsonContent(ref: '#/components/schemas/SecretSchema'))]
+    public function check(SwaggerRequest $request)
+    {
+        $secret = (string) $request->input('secret');
+        $userId = UserAuth::instance()->getUserId();
+
+        $result = $this->service->check($secret, $userId);
+
+        return $this->response->success($result);
+    }
 }
