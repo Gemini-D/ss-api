@@ -29,7 +29,7 @@ class UserDao extends Service
         return $model;
     }
 
-    public function firstOrCreate(string $openid): ?User
+    public function firstOrCreate(string $openid): User
     {
         $model = $this->firstByOpenId($openid);
         if (! $model) {

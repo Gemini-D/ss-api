@@ -35,7 +35,7 @@ class UserAuth
     {
         $token = md5($user->id . ':' . uniqid());
 
-        di()->get(Redis::class)->set(self::PREFIX . $token, Json::encode(['id' => $user->id], 86400));
+        di()->get(Redis::class)->set(self::PREFIX . $token, Json::encode(['id' => $user->id]), 86400);
 
         $this->token = $token;
         $this->userId = $user->id;
