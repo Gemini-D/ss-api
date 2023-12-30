@@ -15,6 +15,6 @@ namespace App\Constants;
 enum ContentType: int
 {
     case TEXT = 0;
-    case RADIO = 1;
+    case AUDIO = 1;
     case VIDEO = 2;
 }
