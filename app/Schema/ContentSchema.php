@@ -67,7 +67,7 @@ class ContentSchema implements JsonSerializable
             'secret_id' => $this->secretId,
             'title' => $this->title,
             'content' => $this->content,
-            'type' => $this->type,
+            'type' => $this->type?->value,
             'created_at' => $this->createdAt,
             'updated_at' => $this->updatedAt,
         ];

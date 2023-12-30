@@ -65,7 +65,7 @@ class UserAuth
         }
 
         if (! $this->secret) {
-            throw new BusinessException(ErrorCode::TOKEN_INVALID);
+            throw new BusinessException(ErrorCode::SECRET_INVALID);
         }
 
         return $this;
