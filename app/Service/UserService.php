@@ -29,6 +29,6 @@ class UserService extends Service
 
         $hasSecret = di()->get(SecretDao::class)->countByUserId($model->id);
 
-        return new UserSchema($model);
+        return new UserSchema($model, $hasSecret > 0);
     }
 }
