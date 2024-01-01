@@ -31,7 +31,7 @@ class SecretDao extends Service
 
     public function create(string $secret, int $userId): Secret
     {
-        if($this->firstBySecret($secret, $userId)){
+        if ($this->firstBySecret($secret, $userId)) {
             throw new BusinessException(ErrorCode::SECRET_ALREADY_EXIST);
         }
 
@@ -50,5 +50,10 @@ class SecretDao extends Service
         return Secret::query()->where('user_id', $userId)
             ->where('secret', md5($secret))
             ->first();
+    }
+
+    public function countByUserId(int $userId): int
+    {
+        return Secret::query()->where('user_id', $userId)->count();
     }
 }
