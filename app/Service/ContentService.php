@@ -68,7 +68,7 @@ class ContentService extends Service
 
     public function save(
         int $id,
-        #[ArrayShape(['secret_id' => 'int', 'title' => 'string', 'content' => 'string'])]
+        #[ArrayShape(['secret_id' => 'int', 'title' => 'string', 'content' => 'string', 'type' => 'int'])]
         array $input,
         UserAuth $userAuth
     ): bool {
@@ -91,11 +91,11 @@ class ContentService extends Service
         } else {
             $model = new Content();
             $model->user_id = $userAuth->getUserId();
-            $model->type = ContentType::TEXT;
             $model->secret_id = $secret->id;
         }
 
         $model->title = $input['title'];
+        $model->type = ContentType::from((int) ($input['type'] ?? 0));
         $model->content = $this->encrypter->encrypt($input['content'], $userAuth->getSecret());
         return $model->save();
     }

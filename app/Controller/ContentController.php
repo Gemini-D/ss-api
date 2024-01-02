@@ -31,6 +31,7 @@ class ContentController extends Controller
         new SA\Property(property: 'secret_id', description: '密码 ID', type: 'integer', rules: 'required|integer'),
         new SA\Property(property: 'title', description: '标题', type: 'string', rules: 'required|string'),
         new SA\Property(property: 'content', description: '内容', type: 'string', rules: 'required|string'),
+        new SA\Property(property: 'type', description: '类型 0 文本 1 音频 2 视频', type: 'integer', rules: 'integer'),
     ]))]
     #[SA\Response(response: '200', content: new SA\JsonContent(ref: '#/components/schemas/SavedSchema'))]
     public function save(SwaggerRequest $request)
