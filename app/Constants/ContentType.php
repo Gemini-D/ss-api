@@ -18,4 +18,14 @@ enum ContentType: int
     case AUDIO = 1;
     case VIDEO = 2;
     case IMAGE = 3;
+
+    public function getName(): string
+    {
+        return match ($this) {
+            self::TEXT => '文本',
+            self::AUDIO => '音频',
+            self::VIDEO => '视频',
+            self::IMAGE => '图片'
+        };
+    }
 }
