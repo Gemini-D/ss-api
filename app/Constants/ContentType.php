@@ -17,4 +17,5 @@ enum ContentType: int
     case TEXT = 0;
     case AUDIO = 1;
     case VIDEO = 2;
+    case IMAGE = 3;
 }
