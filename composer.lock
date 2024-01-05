@@ -1727,16 +1727,16 @@
         },
         {
             "name": "hyperf/database",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/database.git",
-                "reference": "10ef79bbd8c406708fd36fc19c9e4342b92445f5"
+                "reference": "a3ff1e706ba60925700ee854d47d1d9de2a4b705"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/database/zipball/10ef79bbd8c406708fd36fc19c9e4342b92445f5",
-                "reference": "10ef79bbd8c406708fd36fc19c9e4342b92445f5",
+                "url": "https://api.github.com/repos/hyperf/database/zipball/a3ff1e706ba60925700ee854d47d1d9de2a4b705",
+                "reference": "a3ff1e706ba60925700ee854d47d1d9de2a4b705",
                 "shasum": ""
             },
             "require": {
@@ -1794,20 +1794,20 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-12-28T08:46:40+00:00"
+            "time": "2024-01-04T13:47:09+00:00"
         },
         {
             "name": "hyperf/db-connection",
-            "version": "v3.1.0",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/db-connection.git",
-                "reference": "9647e9eeb1788022535988df88585253118554dc"
+                "reference": "3c5eb958677255194ee394b048780076c7472d63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/db-connection/zipball/9647e9eeb1788022535988df88585253118554dc",
-                "reference": "9647e9eeb1788022535988df88585253118554dc",
+                "url": "https://api.github.com/repos/hyperf/db-connection/zipball/3c5eb958677255194ee394b048780076c7472d63",
+                "reference": "3c5eb958677255194ee394b048780076c7472d63",
                 "shasum": ""
             },
             "require": {
@@ -1863,7 +1863,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-11-24T03:10:53+00:00"
+            "time": "2024-01-04T02:42:11+00:00"
         },
         {
             "name": "hyperf/di",
@@ -2224,16 +2224,16 @@
         },
         {
             "name": "hyperf/exception-handler",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/exception-handler.git",
-                "reference": "fd146b8e1fa0e6274e3e9ad7af72a0f976b9aca7"
+                "reference": "8987b0764c6ade4e31b9753152e80dbac9a4a785"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/exception-handler/zipball/fd146b8e1fa0e6274e3e9ad7af72a0f976b9aca7",
-                "reference": "fd146b8e1fa0e6274e3e9ad7af72a0f976b9aca7",
+                "url": "https://api.github.com/repos/hyperf/exception-handler/zipball/8987b0764c6ade4e31b9753152e80dbac9a4a785",
+                "reference": "8987b0764c6ade4e31b9753152e80dbac9a4a785",
                 "shasum": ""
             },
             "require": {
@@ -2295,7 +2295,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-12-28T04:30:32+00:00"
+            "time": "2024-01-04T02:06:27+00:00"
         },
         {
             "name": "hyperf/framework",
@@ -8099,21 +8099,22 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.45.0",
+            "version": "v3.46.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "c0daa33cb2533cd73f48dde1c70c2afa3e7953b5"
+                "reference": "be6831c9af1740470d2a773119b9273f8ac1c3d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/c0daa33cb2533cd73f48dde1c70c2afa3e7953b5",
-                "reference": "c0daa33cb2533cd73f48dde1c70c2afa3e7953b5",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/be6831c9af1740470d2a773119b9273f8ac1c3d2",
+                "reference": "be6831c9af1740470d2a773119b9273f8ac1c3d2",
                 "shasum": ""
             },
             "require": {
                 "composer/semver": "^3.4",
                 "composer/xdebug-handler": "^3.0.3",
+                "ext-filter": "*",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "php": "^7.4 || ^8.0",
@@ -8177,7 +8178,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.45.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.46.0"
             },
             "funding": [
                 {
@@ -8185,7 +8186,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-30T02:07:07+00:00"
+            "time": "2024-01-03T21:38:46+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -8240,16 +8241,16 @@
         },
         {
             "name": "hyperf/devtool",
-            "version": "v3.1.2",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/devtool.git",
-                "reference": "f5ad7f9c9668768efa4989d119df184cb71f920a"
+                "reference": "a4b661d8a433c8335e92d5e258dc233982082e1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/devtool/zipball/f5ad7f9c9668768efa4989d119df184cb71f920a",
-                "reference": "f5ad7f9c9668768efa4989d119df184cb71f920a",
+                "url": "https://api.github.com/repos/hyperf/devtool/zipball/a4b661d8a433c8335e92d5e258dc233982082e1f",
+                "reference": "a4b661d8a433c8335e92d5e258dc233982082e1f",
                 "shasum": ""
             },
             "require": {
@@ -8304,7 +8305,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-12-08T02:35:39+00:00"
+            "time": "2024-01-04T13:25:56+00:00"
         },
         {
             "name": "hyperf/testing",
@@ -8632,16 +8633,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.50",
+            "version": "1.10.51",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "06a98513ac72c03e8366b5a0cb00750b487032e4"
+                "reference": "5082fa72dc13944578806ca1196a385818d8b077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/06a98513ac72c03e8366b5a0cb00750b487032e4",
-                "reference": "06a98513ac72c03e8366b5a0cb00750b487032e4",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/5082fa72dc13944578806ca1196a385818d8b077",
+                "reference": "5082fa72dc13944578806ca1196a385818d8b077",
                 "shasum": ""
             },
             "require": {
@@ -8690,7 +8691,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-13T10:59:42+00:00"
+            "time": "2024-01-04T21:16:30+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

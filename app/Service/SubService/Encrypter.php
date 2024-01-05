@@ -13,19 +13,20 @@ declare(strict_types=1);
 namespace App\Service\SubService;
 
 use Han\Utils\Service;
+use Illuminate\Encryption\Encrypter as IlluminateEncrypter;
 
 class Encrypter extends Service
 {
     public function encrypt(string $content, string $secret): string
     {
-        $encrypt = new \Illuminate\Encryption\Encrypter($secret, 'AES-256-CBC');
+        $encrypt = new IlluminateEncrypter($secret, 'AES-256-CBC');
 
         return $encrypt->encryptString($content);
     }
 
     public function decrypt(string $content, string $secret): string
     {
-        $encrypt = new \Illuminate\Encryption\Encrypter($secret, 'AES-256-CBC');
+        $encrypt = new IlluminateEncrypter($secret, 'AES-256-CBC');
 
         return $encrypt->decryptString($content);
     }

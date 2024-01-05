@@ -15,6 +15,7 @@ namespace App\Model;
 use App\Constants\ContentType;
 use App\Service\SubService\Encrypter;
 use App\Service\SubService\UserAuth;
+use Carbon\Carbon;
 
 /**
  * @property int $id
@@ -23,8 +24,8 @@ use App\Service\SubService\UserAuth;
  * @property string $title 标题
  * @property string $content 内容
  * @property ContentType $type 类型 0 文本 1 音频 2 视频
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 class Content extends Model
 {
