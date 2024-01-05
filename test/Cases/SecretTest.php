@@ -15,6 +15,7 @@ namespace HyperfTest\Cases;
 use App\Model\Secret;
 use App\Service\SubService\UserAuth;
 use HyperfTest\HttpTestCase;
+use PHPUnit\Framework\Attributes\WithoutErrorHandler;
 
 /**
  * @internal
@@ -40,6 +41,15 @@ class SecretTest extends HttpTestCase
         $res = $this->json('/secret/check', [
             'secret' => '6666',
         ], [
+            UserAuth::X_TOKEN => self::$token,
+        ]);
+
+        $this->assertSame(0, $res['code']);
+    }
+
+    public function testSecretMessage()
+    {
+        $res = $this->get('/secret/message', [], [
             UserAuth::X_TOKEN => self::$token,
         ]);
 

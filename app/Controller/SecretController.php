@@ -54,4 +54,13 @@ class SecretController extends Controller
 
         return $this->response->success($result);
     }
+
+    #[SA\Get('/secret/message', summary: '密码提示', tags: ['密码管理'])]
+    #[SA\Response(response: '200', content: new SA\JsonContent(ref: '#/components/schemas/MessageSchema'))]
+    public function message()
+    {
+        return $this->response->success(
+            $this->service->message()
+        );
+    }
 }

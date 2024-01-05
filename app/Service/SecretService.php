@@ -14,6 +14,7 @@ namespace App\Service;
 
 use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
+use App\Schema\MessageSchema;
 use App\Schema\SecretSchema;
 use App\Service\Dao\SecretDao;
 use App\Service\SubService\UserAuth;
@@ -42,5 +43,10 @@ class SecretService extends Service
         UserAuth::instance()->save($secret);
 
         return new SecretSchema($model);
+    }
+
+    public function message(): MessageSchema
+    {
+        return new MessageSchema('输入密钥，解锁内容。所有密钥和内容都会加密存储，不会泄露任何数据。没有提前设置密钥，可以点击右下角的+号，新增密钥。');
     }
 }
