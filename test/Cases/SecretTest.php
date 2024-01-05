@@ -15,7 +15,6 @@ namespace HyperfTest\Cases;
 use App\Model\Secret;
 use App\Service\SubService\UserAuth;
 use HyperfTest\HttpTestCase;
-use PHPUnit\Framework\Attributes\WithoutErrorHandler;
 
 /**
  * @internal
