@@ -1,5 +1,11 @@
 # 我的隐私空间-接口服务
 
+## 安装指南
+
+- 需要安装 [用户服务](https://github.com/Gemini-D/plt-user)
+
+若不能已项目名作为服务名进行标准安装，则需要设置环境变量 `RPC_PLT_USER="127.0.0.1:9502"`
+
 ## 教程视频
 
 - [第1章](https://www.bilibili.com/video/BV1YN4y1W7ak/)

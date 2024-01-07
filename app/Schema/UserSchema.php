@@ -23,9 +23,6 @@ class UserSchema implements JsonSerializable
     #[Property(property: 'id', title: '', type: 'int')]
     public ?int $id;
 
-    #[Property(property: 'openid', title: '小程序 OpenID', type: 'string')]
-    public ?string $openid;
-
     #[Property(property: 'has_secret', title: '是否已经创建过密码', type: 'boolean')]
     public ?bool $hasSecret;
 
@@ -38,7 +35,6 @@ class UserSchema implements JsonSerializable
     public function __construct(User $model, ?bool $hasSecret = null)
     {
         $this->id = $model->id;
-        $this->openid = $model->openid;
         $this->hasSecret = $hasSecret;
         $this->createdAt = $model->created_at?->toDateTimeString();
         $this->updatedAt = $model->updated_at?->toDateTimeString();
@@ -48,7 +44,6 @@ class UserSchema implements JsonSerializable
     {
         return [
             'id' => $this->id,
-            // 'openid' => $this->openid,
             'has_secret' => $this->hasSecret,
             'created_at' => $this->createdAt,
             'updated_at' => $this->updatedAt,

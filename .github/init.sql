@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 8.0.32)
 # 数据库: secret_space
-# 生成时间: 2024-01-05 05:00:02 +0000
+# 生成时间: 2024-01-07 00:40:43 +0000
 # ************************************************************
 
 
@@ -79,20 +79,19 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 CREATE TABLE `user` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `openid` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '小程序 OpenID',
+  `id` bigint unsigned NOT NULL,
   `created_at` datetime NOT NULL DEFAULT '2023-01-01 00:00:00',
   `updated_at` datetime NOT NULL DEFAULT '2023-01-01 00:00:00',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQUE_OPENID` (`openid`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户表';
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 
-INSERT INTO `user` (`id`, `openid`, `created_at`, `updated_at`)
+INSERT INTO `user` (`id`, `created_at`, `updated_at`)
 VALUES
-	(1,'ohjUY0TB_onjcaH2ia06HgGOC4CY','2023-12-30 13:35:57','2023-12-30 13:35:57');
+	(1,'2023-12-30 13:35:57','2023-12-30 13:35:57'),
+	(186864216584192,'2024-01-07 08:39:35','2024-01-07 08:39:35');
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;

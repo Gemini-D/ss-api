@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace HyperfTest;
 
 use App\Service\SubService\UserAuth;
-use App\Service\SubService\WeChatService;
+use GeminiD\PltCommon\RPC\User\UserInterface;
 use Hyperf\Testing;
 use Mockery;
 use PHPUnit\Framework\TestCase;
@@ -55,8 +55,8 @@ abstract class HttpTestCase extends TestCase
         if (! self::$init) {
             self::$init = true;
 
-            di()->set(WeChatService::class, $chat = Mockery::mock(WeChatService::class));
-            $chat->shouldReceive('login')->with('1234567890')->andReturn(['openid' => 'ohjUY0TB_onjcaH2ia06HgGOC4CY']);
+            di()->set(UserInterface::class, $user = Mockery::mock(UserInterface::class));
+            $user->shouldReceive('firstByCode')->withAnyArgs()->andReturn(['id' => 186864216584192]);
 
             $res = $this->json('/login', [
                 'code' => '1234567890',

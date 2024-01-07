@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99b25e6607c775aa934d14f3da8e7276",
+    "content-hash": "ce10580979480ddf8746eb5c315bb7c2",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -483,6 +483,68 @@
                 "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
             },
             "time": "2020-11-24T22:02:12+00:00"
+        },
+        {
+            "name": "gemini-d/plt-common",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gemini-D/plt-common.git",
+                "reference": "b2ebca6e9e8e03595fe6463166278834f1e6bdd1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gemini-D/plt-common/zipball/b2ebca6e9e8e03595fe6463166278834f1e6bdd1",
+                "reference": "b2ebca6e9e8e03595fe6463166278834f1e6bdd1",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/config": "^3.1",
+                "hyperf/event": "^3.1",
+                "hyperf/framework": "^3.1",
+                "hyperf/rpc-multiplex": "^3.1",
+                "hyperf/support": "^3.1",
+                "jetbrains/phpstorm-attributes": "^1.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "mockery/mockery": "^1.0",
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^10.0",
+                "swoole/ide-helper": "dev-master"
+            },
+            "suggest": {
+                "swow/swow": "Required to create swow components."
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "GeminiD\\PltCommon\\ConfigProvider"
+                },
+                "branch-alias": {
+                    "dev-main": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeminiD\\PltCommon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "keywords": [
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/Gemini-D/plt-common/issues",
+                "source": "https://github.com/Gemini-D/plt-common/tree/main"
+            },
+            "time": "2024-01-06T04:28:03+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -2589,6 +2651,71 @@
             "time": "2023-11-24T03:10:53+00:00"
         },
         {
+            "name": "hyperf/load-balancer",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/load-balancer.git",
+                "reference": "ee8f5648b46e4d8a7e01aa26c149fbf561ccd286"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/load-balancer/zipball/ee8f5648b46e4d8a7e01aa26c149fbf561ccd286",
+                "reference": "ee8f5648b46e4d8a7e01aa26c149fbf561ccd286",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/coordinator": "~3.1.0",
+                "hyperf/coroutine": "~3.1.0",
+                "markrogoyski/math-php": "^2.0",
+                "php": ">=8.1",
+                "psr/log": "^1.0|^2.0|^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\LoadBalancer\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\LoadBalancer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A load balancer library for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "load-balancer",
+                "php",
+                "swoole"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-11-24T03:10:53+00:00"
+        },
+        {
             "name": "hyperf/logger",
             "version": "v3.1.0",
             "source": {
@@ -3156,6 +3283,334 @@
                 "php",
                 "pool",
                 "redis"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-11-24T03:10:53+00:00"
+        },
+        {
+            "name": "hyperf/rpc",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/rpc.git",
+                "reference": "f5a53e0122ca8987a807c67ebf80e35384d11529"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/rpc/zipball/f5a53e0122ca8987a807c67ebf80e35384d11529",
+                "reference": "f5a53e0122ca8987a807c67ebf80e35384d11529",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/codec": "~3.1.0",
+                "hyperf/contract": "~3.1.0",
+                "hyperf/support": "~3.1.0",
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "hyperf": []
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\Rpc\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A rpc basic library for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "php",
+                "rpc",
+                "swoole"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-11-24T03:10:53+00:00"
+        },
+        {
+            "name": "hyperf/rpc-client",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/rpc-client.git",
+                "reference": "acaae6f774ab21e906a4ae24548e904c9ded7051"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/rpc-client/zipball/acaae6f774ab21e906a4ae24548e904c9ded7051",
+                "reference": "acaae6f774ab21e906a4ae24548e904c9ded7051",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/code-parser": "~3.1.0",
+                "hyperf/load-balancer": "~3.1.0",
+                "hyperf/rpc": "~3.1.0",
+                "hyperf/support": "~3.1.0",
+                "hyperf/utils": "~3.1.0",
+                "php": ">=8.1",
+                "psr/container": "^1.0|^2.0"
+            },
+            "suggest": {
+                "hyperf/di": "For better container experience.",
+                "hyperf/pool": "Required to use connection pool.",
+                "hyperf/service-governance": "Required to fetch the nodes info from service governance."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\RpcClient\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\RpcClient\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An abstract rpc server component for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "json-rpc",
+                "php",
+                "rpc",
+                "rpc-client",
+                "swoole"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-11-24T03:10:53+00:00"
+        },
+        {
+            "name": "hyperf/rpc-log-listener",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/limingxinleo/rpc-log-listener.git",
+                "reference": "b50ce7718b3e617c6f2d77488e0e29080cce5f74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/limingxinleo/rpc-log-listener/zipball/b50ce7718b3e617c6f2d77488e0e29080cce5f74",
+                "reference": "b50ce7718b3e617c6f2d77488e0e29080cce5f74",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/di": "^3.0",
+                "hyperf/event": "^3.0",
+                "hyperf/logger": "^3.0",
+                "hyperf/rpc-client": "^3.0",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "mockery/mockery": "^1.0",
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": ">=7.0",
+                "swoole/ide-helper": "^4.5"
+            },
+            "suggest": {
+                "swow/swow": "Required to create swow components."
+            },
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "Hyperf\\RPCLogListener\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\RPCLogListener\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "RPC Log Listener for Hyperf",
+            "keywords": [
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/limingxinleo/rpc-log-listener/issues",
+                "source": "https://github.com/limingxinleo/rpc-log-listener/tree/v1.0.5"
+            },
+            "time": "2024-01-05T13:54:38+00:00"
+        },
+        {
+            "name": "hyperf/rpc-multiplex",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/rpc-multiplex.git",
+                "reference": "a86f5f991c5f2247860597dad74a3d5a83b1cb0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/rpc-multiplex/zipball/a86f5f991c5f2247860597dad74a3d5a83b1cb0e",
+                "reference": "a86f5f991c5f2247860597dad74a3d5a83b1cb0e",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/codec": "~3.1.0",
+                "hyperf/framework": "~3.1.0",
+                "hyperf/http-message": "~3.1.0",
+                "hyperf/load-balancer": "~3.1.0",
+                "hyperf/rpc": "~3.1.0",
+                "hyperf/rpc-client": "~3.1.0",
+                "hyperf/rpc-server": "~3.1.0",
+                "hyperf/server": "~3.1.0",
+                "hyperf/support": "~3.1.0",
+                "hyperf/utils": "~3.1.0",
+                "multiplex/socket": "^1.0",
+                "php": ">=8.1",
+                "swow/psr7-plus": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "Hyperf\\RpcMultiplex\\ConfigProvider"
+                },
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\RpcMultiplex\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Rpc for multiplexing connection",
+            "keywords": [
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/hyperf/rpc-multiplex/issues",
+                "source": "https://github.com/hyperf/rpc-multiplex/tree/v3.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-11-24T03:10:53+00:00"
+        },
+        {
+            "name": "hyperf/rpc-server",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/rpc-server.git",
+                "reference": "e0bb89ea2af4064e4cf9a2c2754cc959c43e9c40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/rpc-server/zipball/e0bb89ea2af4064e4cf9a2c2754cc959c43e9c40",
+                "reference": "e0bb89ea2af4064e4cf9a2c2754cc959c43e9c40",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/http-server": "~3.1.0",
+                "hyperf/rpc": "~3.1.0",
+                "php": ">=8.1"
+            },
+            "suggest": {
+                "hyperf/di": "Required to use annotations."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\RpcServer\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\RpcServer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An abstract rpc server component for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "php",
+                "rpc",
+                "rpc-server",
+                "swoole"
             ],
             "support": {
                 "docs": "https://hyperf.wiki",
@@ -4206,6 +4661,81 @@
             "time": "2022-04-01T11:22:50+00:00"
         },
         {
+            "name": "markrogoyski/math-php",
+            "version": "v2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/markrogoyski/math-php.git",
+                "reference": "ea4f212732c333c62123c6f733edfb735a4e3abd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/markrogoyski/math-php/zipball/ea4f212732c333c62123c6f733edfb735a4e3abd",
+                "reference": "ea4f212732c333c62123c6f733edfb735a4e3abd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phploc/phploc": "*",
+                "phpmd/phpmd": "^2.6",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^8.5",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MathPHP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Rogoyski",
+                    "email": "mark@rogoyski.com",
+                    "homepage": "https://github.com/markrogoyski",
+                    "role": "Lead developer"
+                },
+                {
+                    "name": "Kevin Nowaczyk",
+                    "homepage": "https://github.com/Beakerboy",
+                    "role": "Developer"
+                },
+                {
+                    "name": "MathPHP Community of Contributors",
+                    "homepage": "https://github.com/markrogoyski/math-php/graphs/contributors"
+                }
+            ],
+            "description": "Math Library for PHP. Features descriptive statistics and regressions; Continuous and discrete probability distributions; Linear algebra with matrices and vectors, Numerical analysis; special mathematical functions; Algebra",
+            "homepage": "https://github.com/markrogoyski/math-php/",
+            "keywords": [
+                "algebra",
+                "combinatorics",
+                "distributions",
+                "linear algebra",
+                "math",
+                "mathematics",
+                "matrix",
+                "numerical analysis",
+                "probability",
+                "regressions",
+                "statistics"
+            ],
+            "support": {
+                "issues": "https://github.com/markrogoyski/math-php/issues",
+                "source": "https://github.com/markrogoyski/math-php/tree/v2.8.1"
+            },
+            "time": "2023-05-19T04:40:46+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "3.5.0",
             "source": {
@@ -4305,6 +4835,129 @@
                 }
             ],
             "time": "2023-10-27T15:32:31+00:00"
+        },
+        {
+            "name": "multiplex/multiplex",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/multiplex.git",
+                "reference": "6964a3f3fea90182a0b196b4eff24079deec5dff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/multiplex/zipball/6964a3f3fea90182a0b196b4eff24079deec5dff",
+                "reference": "6964a3f3fea90182a0b196b4eff24079deec5dff",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/engine": "^1.2|^2.0",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "hyperf/utils": "^3.0",
+                "mockery/mockery": "^1.0",
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "swoole/ide-helper": "dev-master",
+                "swow/swow": "dev-develop",
+                "symfony/var-dumper": "^5.1"
+            },
+            "suggest": {
+                "ext-json": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Multiplex\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "keywords": [
+                "hyperf",
+                "multiplex",
+                "php",
+                "rpc"
+            ],
+            "support": {
+                "issues": "https://github.com/hyperf/multiplex/issues",
+                "source": "https://github.com/hyperf/multiplex/tree/v1.0.0"
+            },
+            "time": "2023-01-13T02:16:38+00:00"
+        },
+        {
+            "name": "multiplex/socket",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/multiplex-socket.git",
+                "reference": "4496affbe60dae9442ff0ea4fae3fef691139ee5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/multiplex-socket/zipball/4496affbe60dae9442ff0ea4fae3fef691139ee5",
+                "reference": "4496affbe60dae9442ff0ea4fae3fef691139ee5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-sockets": "*",
+                "hyperf/coordinator": ">=3.0",
+                "hyperf/coroutine": ">=3.0",
+                "multiplex/multiplex": "^1.0",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "hyperf/utils": ">=3.0",
+                "mockery/mockery": "^1.0",
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "swoole/ide-helper": "^4.8",
+                "symfony/var-dumper": "^5.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Multiplex\\Socket\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "keywords": [
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/hyperf/multiplex-socket/issues",
+                "source": "https://github.com/hyperf/multiplex-socket/tree/v1.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-12-11T10:22:07+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -8633,16 +9286,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.51",
+            "version": "1.10.54",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "5082fa72dc13944578806ca1196a385818d8b077"
+                "reference": "3e25f279dada0adc14ffd7bad09af2e2fc3523bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/5082fa72dc13944578806ca1196a385818d8b077",
-                "reference": "5082fa72dc13944578806ca1196a385818d8b077",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3e25f279dada0adc14ffd7bad09af2e2fc3523bb",
+                "reference": "3e25f279dada0adc14ffd7bad09af2e2fc3523bb",
                 "shasum": ""
             },
             "require": {
@@ -8691,7 +9344,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-04T21:16:30+00:00"
+            "time": "2024-01-05T15:50:47+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -10526,6 +11179,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "gemini-d/plt-common": 20,
         "swoole/ide-helper": 20
     },
     "prefer-stable": true,

@@ -16,12 +16,13 @@ use Carbon\Carbon;
 
 /**
  * @property int $id
- * @property string $openid 小程序 OpenID
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
 class User extends Model
 {
+    public bool $incrementing = false;
+
     /**
      * The table associated with the model.
      */
@@ -30,7 +31,7 @@ class User extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected array $fillable = ['id', 'openid', 'created_at', 'updated_at'];
+    protected array $fillable = ['id', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be cast to native types.

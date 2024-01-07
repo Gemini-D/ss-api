@@ -29,20 +29,15 @@ class UserDao extends Service
         return $model;
     }
 
-    public function firstOrCreate(string $openid): User
+    public function firstOrCreate(int $userId): User
     {
-        $model = $this->firstByOpenId($openid);
+        $model = $this->first($userId);
         if (! $model) {
             $model = new User();
-            $model->openid = $openid;
+            $model->id = $userId;
             $model->save();
         }
 
         return $model;
-    }
-
-    public function firstByOpenId(string $openid): ?User
-    {
-        return User::query()->where('openid', $openid)->first();
     }
 }
