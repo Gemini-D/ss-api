@@ -19,7 +19,7 @@
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
         "ext-swoole": ">=5.0",
-        "gemini-d/plt-common": "^1.0@dev",
+        "gemini-d/plt-common": "^1.0",
         "hyperf/async-queue": "3.1.*",
         "hyperf/cache": "3.1.*",
         "hyperf/command": "3.1.*",
