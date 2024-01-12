@@ -8450,16 +8450,16 @@
         },
         {
             "name": "zircote/swagger-php",
-            "version": "4.8.2",
+            "version": "4.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zircote/swagger-php.git",
-                "reference": "a70a5dc5db26183c86f589ff3d76fb11e141fc58"
+                "reference": "598958d8a83cfbd44ba36388b2f9ed69e8b86ed4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/a70a5dc5db26183c86f589ff3d76fb11e141fc58",
-                "reference": "a70a5dc5db26183c86f589ff3d76fb11e141fc58",
+                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/598958d8a83cfbd44ba36388b2f9ed69e8b86ed4",
+                "reference": "598958d8a83cfbd44ba36388b2f9ed69e8b86ed4",
                 "shasum": ""
             },
             "require": {
@@ -8525,9 +8525,9 @@
             ],
             "support": {
                 "issues": "https://github.com/zircote/swagger-php/issues",
-                "source": "https://github.com/zircote/swagger-php/tree/4.8.2"
+                "source": "https://github.com/zircote/swagger-php/tree/4.8.3"
             },
-            "time": "2023-12-19T19:59:07+00:00"
+            "time": "2024-01-07T22:33:09+00:00"
         }
     ],
     "packages-dev": [
@@ -9285,16 +9285,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.54",
+            "version": "1.10.55",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "3e25f279dada0adc14ffd7bad09af2e2fc3523bb"
+                "reference": "9a88f9d18ddf4cf54c922fbeac16c4cb164c5949"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3e25f279dada0adc14ffd7bad09af2e2fc3523bb",
-                "reference": "3e25f279dada0adc14ffd7bad09af2e2fc3523bb",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9a88f9d18ddf4cf54c922fbeac16c4cb164c5949",
+                "reference": "9a88f9d18ddf4cf54c922fbeac16c4cb164c5949",
                 "shasum": ""
             },
             "require": {
@@ -9343,7 +9343,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-05T15:50:47+00:00"
+            "time": "2024-01-08T12:32:40+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -10688,12 +10688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swoole/ide-helper.git",
-                "reference": "d246e7c7d4a9fd8baa806723759fe4e73148caed"
+                "reference": "5cedc4fb1c2e9566ac5df1c6a2fe150847e0ef0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/d246e7c7d4a9fd8baa806723759fe4e73148caed",
-                "reference": "d246e7c7d4a9fd8baa806723759fe4e73148caed",
+                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/5cedc4fb1c2e9566ac5df1c6a2fe150847e0ef0b",
+                "reference": "5cedc4fb1c2e9566ac5df1c6a2fe150847e0ef0b",
                 "shasum": ""
             },
             "default-branch": true,
@@ -10713,7 +10713,7 @@
                 "issues": "https://github.com/swoole/ide-helper/issues",
                 "source": "https://github.com/swoole/ide-helper/tree/master"
             },
-            "time": "2023-12-11T08:01:25+00:00"
+            "time": "2024-01-12T01:41:29+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
