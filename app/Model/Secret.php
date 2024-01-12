@@ -18,6 +18,7 @@ use Carbon\Carbon;
  * @property int $id
  * @property int $user_id 用户 ID
  * @property string $secret 密码
+ * @property int $share_id 被分享的密码 ID
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -31,10 +32,10 @@ class Secret extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected array $fillable = ['id', 'user_id', 'secret', 'created_at', 'updated_at'];
+    protected array $fillable = ['id', 'user_id', 'secret', 'share_id', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be cast to native types.
      */
-    protected array $casts = ['id' => 'integer', 'user_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+    protected array $casts = ['id' => 'integer', 'user_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime', 'share_id' => 'integer'];
 }

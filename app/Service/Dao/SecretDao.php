@@ -56,4 +56,15 @@ class SecretDao extends Service
     {
         return Secret::query()->where('user_id', $userId)->count();
     }
+
+    public function isShare(int $userId, int $secretId): bool
+    {
+        if ($secretId <= 0) {
+            return false;
+        }
+
+        return Secret::query()->where('user_id', $userId)
+            ->where('share_id', $secretId)
+            ->exists();
+    }
 }

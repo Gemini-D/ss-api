@@ -70,6 +70,11 @@ enum ErrorCode: int implements ErrorCodeInterface
      */
     case CONTENT_NOT_EXIST = 1200;
 
+    /**
+     * @Message("被分享的内容不允许修改")
+     */
+    case CONTENT_CANNOT_SAVE_CAUSED_BY_SHARE = 1201;
+
     public function getMessage(array $translate = null): string
     {
         $arguments = [];

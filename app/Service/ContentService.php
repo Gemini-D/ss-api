@@ -43,7 +43,7 @@ class ContentService extends Service
         $userAuth->build();
 
         $model = $this->dao->first($id, true);
-        if ($model->user_id !== $userAuth->getUserId()) {
+        if ($model->user_id !== $userAuth->getUserId() && ! di()->get(SecretDao::class)->isShare($userAuth->getUserId(), $model->secret_id)) {
             throw new BusinessException(ErrorCode::PERMISSION_DENY);
         }
 
@@ -57,6 +57,10 @@ class ContentService extends Service
         $secret = di()->get(SecretDao::class)->first($secretId, true);
         if ($secret->user_id !== $userAuth->getUserId()) {
             throw new BusinessException(ErrorCode::PERMISSION_DENY);
+        }
+
+        if ($secret->share_id > 0) {
+            $secret = di()->get(SecretDao::class)->first($secret->share_id, true);
         }
 
         $contents = $this->dao->findBySecretId($secret->id);
@@ -75,6 +79,9 @@ class ContentService extends Service
         $userAuth->build();
 
         $secret = di()->get(SecretDao::class)->first((int) $input['secret_id'], true);
+        if ($secret->share_id > 0) {
+            throw new BusinessException(ErrorCode::CONTENT_CANNOT_SAVE_CAUSED_BY_SHARE);
+        }
         if ($secret->user_id !== $userAuth->getUserId()) {
             throw new BusinessException(ErrorCode::PERMISSION_DENY);
         }
