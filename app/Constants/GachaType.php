@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Constants;
 
+use Hyperf\Database\Model\Builder;
+
 enum GachaType: int
 {
     /**
@@ -30,6 +32,11 @@ enum GachaType: int
     case ROLE = 301;
 
     /**
+     * UP 角色池2.
+     */
+    case ROLE_2 = 400;
+
+    /**
      * 武器池.
      */
     case WEAPON = 302;
@@ -41,5 +48,13 @@ enum GachaType: int
             self::ROLE,
             self::WEAPON,
         ];
+    }
+
+    public function appendQuery(Builder $query)
+    {
+        return match ($this) {
+            self::ROLE, self::ROLE_2 => $query->whereIn('gacha_type', [self::ROLE, self::ROLE_2]),
+            default => $query->where('gacha_type', $this)
+        };
     }
 }

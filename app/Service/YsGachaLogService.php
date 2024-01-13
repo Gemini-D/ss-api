@@ -26,8 +26,10 @@ class YsGachaLogService extends Service
 {
     public function dashboard(int $uid, GachaType $type): array
     {
-        $ups = YsGachaLog::query()->where('uid', $uid)->where('gacha_type', $type)
+        $query = YsGachaLog::query()->where('uid', $uid);
+        $ups = $type->appendQuery($query)
             ->where('rank_type', 5)
+            ->orderBy('id', 'desc')
             ->get();
 
         $result = [];
@@ -37,7 +39,8 @@ class YsGachaLogService extends Service
         $prev->item_type = '无';
         $prev->rank_type = 5;
         foreach ($ups as $up) {
-            $query = YsGachaLog::query()->where('uid', $uid)->where('gacha_type', $type);
+            $query = YsGachaLog::query()->where('uid', $uid);
+            $query = $type->appendQuery($query);
             if ($prev->id !== 0) {
                 $query->where('id', '<', $prev->id);
             }
@@ -49,7 +52,8 @@ class YsGachaLogService extends Service
             $prev = $up;
         }
 
-        $query = YsGachaLog::query()->where('uid', $uid)->where('gacha_type', $type);
+        $query = YsGachaLog::query()->where('uid', $uid);
+        $query = $type->appendQuery($query);
         if ($prev->id !== 0) {
             $query->where('id', '<', $prev->id);
         }
