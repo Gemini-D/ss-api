@@ -49,7 +49,12 @@ class YsGachaLogService extends Service
             $prev = $up;
         }
 
-        $num = YsGachaLog::query()->where('uid', $uid)->where('gacha_type', $type)->where('id', '<', $prev->id)->where('rank_type', '<=', 4)->count();
+        $query = YsGachaLog::query()->where('uid', $uid)->where('gacha_type', $type);
+        if ($prev->id !== 0) {
+            $query->where('id', '<', $prev->id);
+        }
+
+        $num = $query->where('rank_type', '<=', 4)->count();
 
         $result[] = new YsGachaSchema($prev->name, $prev->item_type, $prev->rank_type, $num);
 
