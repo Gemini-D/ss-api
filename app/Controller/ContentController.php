@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\ContentType;
 use App\Schema\SavedSchema;
 use App\Service\ContentService;
 use App\Service\SubService\UserAuth;
@@ -72,5 +73,14 @@ class ContentController extends Controller
         $result = $this->service->info($id, $userAuth);
 
         return $this->response->success($result);
+    }
+
+    #[SA\Get('/content/type-list', summary: '内容类型列表', tags: ['内容管理'])]
+    #[SA\Response(response: '200', content: new SA\JsonContent(type: 'array', items: new SA\Items(ref: '#/components/schemas/ContentTypeSchema')))]
+    public function contentType()
+    {
+        return $this->response->success(
+            ContentType::all()
+        );
     }
 }
