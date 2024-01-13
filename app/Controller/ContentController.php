@@ -102,7 +102,7 @@ class ContentController extends Controller
         return $this->response->success($result);
     }
 
-    #[SA\Get('/content/fresh-gacha', summary: '读取最新抽卡记录', tags: ['内容管理'])]
+    #[SA\Post('/content/fresh-gacha', summary: '读取最新抽卡记录', tags: ['内容管理'])]
     #[SA\RequestBody(content: new SA\JsonContent(properties: [
         new SA\Property(property: 'id', description: '内容 ID', type: 'integer', rules: 'required|integer'),
     ]))]
