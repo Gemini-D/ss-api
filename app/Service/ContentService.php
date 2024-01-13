@@ -24,8 +24,10 @@ use App\Service\Formatter\ContentFormatter;
 use App\Service\SubService\Encrypter;
 use App\Service\SubService\UserAuth;
 use Han\Utils\Service;
+use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
 use JetBrains\PhpStorm\ArrayShape;
+use Throwable;
 
 class ContentService extends Service
 {
@@ -112,6 +114,19 @@ class ContentService extends Service
         $model->title = $input['title'];
         $model->type = ContentType::from((int) ($input['type'] ?? 0));
         $model->content = $this->encrypter->encrypt($input['content'], $userAuth->getSecret());
-        return $model->save();
+
+        $user = di()->get(YsUserService::class)->save($model, $input);
+
+        Db::beginTransaction();
+        try {
+            $model->save();
+            $user?->save();
+            Db::commit();
+        } catch (Throwable $throwable) {
+            Db::rollBack();
+            throw $throwable;
+        }
+
+        return true;
     }
 }

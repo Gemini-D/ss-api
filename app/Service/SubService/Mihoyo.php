@@ -228,7 +228,7 @@ class Mihoyo extends Service
 
         $result = Json::decode((string) $result->getBody());
         if ($result['retcode'] !== 0) {
-            throw new BusinessException(ErrorCode::REQUEST_MIHOYO_FAILED);
+            throw new BusinessException(ErrorCode::REQUEST_MIHOYO_FAILED, '当前票据已失效');
         }
 
         $res = [];
