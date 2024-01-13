@@ -85,6 +85,11 @@ enum ErrorCode: int implements ErrorCodeInterface
      */
     case CONTENT_CANNOT_SAVE_CAUSED_BY_SHARE = 1201;
 
+    /**
+     * @Message("原神信息不存在")
+     */
+    case YS_USER_NOT_EXIST = 1300;
+
     public function getMessage(array $translate = null): string
     {
         $arguments = [];

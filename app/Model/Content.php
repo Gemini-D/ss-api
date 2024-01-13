@@ -49,4 +49,9 @@ class Content extends Model
         $secret = UserAuth::instance()->build()->getSecret();
         return di()->get(Encrypter::class)->decrypt($this->content, $secret);
     }
+
+    public function isYuanShen(): bool
+    {
+        return $this->type === ContentType::YUAN_SHEN;
+    }
 }

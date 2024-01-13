@@ -127,6 +127,10 @@ class ContentService extends Service
             throw $throwable;
         }
 
+        if ($user) {
+            di()->get(YsGachaLogService::class)->load($user->id);
+        }
+
         return true;
     }
 }

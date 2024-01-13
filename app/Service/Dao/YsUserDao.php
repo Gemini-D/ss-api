@@ -12,11 +12,23 @@ declare(strict_types=1);
 
 namespace App\Service\Dao;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use App\Model\YsUser;
 use Han\Utils\Service;
 
 class YsUserDao extends Service
 {
+    public function first(int $id, bool $throw = false): ?YsUser
+    {
+        $model = YsUser::findFromCache($id);
+        if (! $model && $throw) {
+            throw new BusinessException(ErrorCode::YS_USER_NOT_EXIST);
+        }
+
+        return $model;
+    }
+
     public function firstByContentId(int $contentId): ?YsUser
     {
         return YsUser::query()->where('content_id', $contentId)->first();

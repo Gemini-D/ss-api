@@ -27,6 +27,8 @@ use Carbon\Carbon;
  */
 class YsGachaLog extends Model
 {
+    public bool $incrementing = false;
+
     /**
      * The table associated with the model.
      */
