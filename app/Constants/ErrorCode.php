@@ -46,6 +46,16 @@ enum ErrorCode: int implements ErrorCodeInterface
     case SECRET_INVALID = 702;
 
     /**
+     * @Message("访问米哈游服务器报错")
+     */
+    case REQUEST_MIHOYO_FAILED = 703;
+
+    /**
+     * @Message("米哈游验证码登录失败")
+     */
+    case REQUEST_MIHOYO_LOGIN_BY_MOBILE_CAPTCHA = 704;
+
+    /**
      * @Message("参数错误")
      */
     case PARAMS_INVALID = 1000;

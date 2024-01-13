@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Constants;
 
+use App\Exception\BusinessException;
 use App\Schema\ContentTypeSchema;
 
 enum ContentType: int
@@ -52,5 +53,16 @@ enum ContentType: int
         }
 
         return $result;
+    }
+
+    public function checkContent(string $content): void
+    {
+        if ($this === self::YUAN_SHEN) {
+            $exploded = explode(PHP_EOL, $content);
+            $exploded = array_filter($exploded);
+            if (count($exploded) !== 2) {
+                throw new BusinessException(ErrorCode::PARAMS_INVALID, '原神类型，必须第一行传入米游社 UID，第二行传入登录后的 weblogin_token');
+            }
+        }
     }
 }

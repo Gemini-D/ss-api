@@ -72,11 +72,19 @@ class ContentService extends Service
 
     public function save(
         int $id,
-        #[ArrayShape(['secret_id' => 'int', 'title' => 'string', 'content' => 'string', 'type' => 'int'])]
+        #[ArrayShape([
+            'secret_id' => 'int',
+            'title' => 'string',
+            'content' => 'string',
+            'type' => 'int',
+        ])]
         array $input,
         UserAuth $userAuth
     ): bool {
         $userAuth->build();
+
+        $type = ContentType::from($input['type']);
+        $type->checkContent($input['content']);
 
         $secret = di()->get(SecretDao::class)->first((int) $input['secret_id'], true);
         if ($secret->share_id > 0) {
