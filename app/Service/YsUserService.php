@@ -44,7 +44,7 @@ class YsUserService extends Service
         $model = $this->dao->firstByContentId($content->id);
         if (! $model) {
             $model = new YsUser();
-            $model->content_id = $content->id;
+            $model->content_id = (int) $content->id;
         }
 
         $model->mid = $mid;

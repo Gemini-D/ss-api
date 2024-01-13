@@ -29,8 +29,12 @@ class YsUserDao extends Service
         return $model;
     }
 
-    public function firstByContentId(int $contentId): ?YsUser
+    public function firstByContentId(?int $contentId): ?YsUser
     {
+        if ($contentId === null) {
+            return null;
+        }
+
         return YsUser::query()->where('content_id', $contentId)->first();
     }
 }

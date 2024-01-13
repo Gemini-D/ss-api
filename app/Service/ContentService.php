@@ -120,7 +120,10 @@ class ContentService extends Service
         Db::beginTransaction();
         try {
             $model->save();
-            $user?->save();
+            if ($user) {
+                $user->content_id = $model->id;
+                $user->save();
+            }
             Db::commit();
         } catch (Throwable $throwable) {
             Db::rollBack();
