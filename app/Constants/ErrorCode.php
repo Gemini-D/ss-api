@@ -95,6 +95,11 @@ enum ErrorCode: int implements ErrorCodeInterface
      */
     case YS_USER_NOT_EXIST = 1300;
 
+    /**
+     * @Message("祈愿记录一小时内只能刷新一次")
+     */
+    case YS_GACHA_FRESH_FAILED = 1301;
+
     public function getMessage(array $translate = null): string
     {
         $arguments = [];

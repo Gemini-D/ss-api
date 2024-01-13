@@ -28,6 +28,7 @@ use App\Service\SubService\UserAuth;
 use Han\Utils\Service;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
+use Hyperf\Redis\Redis;
 use JetBrains\PhpStorm\ArrayShape;
 use Throwable;
 
@@ -70,6 +71,30 @@ class ContentService extends Service
         $user = di()->get(YsUserDao::class)->firstByContentId($model->id, true);
 
         return di()->get(YsGachaLogService::class)->dashboard($user->uid, $type);
+    }
+
+    public function freshGacha(int $id, UserAuth $userAuth)
+    {
+        $userAuth->build();
+
+        $model = $this->dao->first($id, true);
+        if ($model->user_id !== $userAuth->getUserId() && ! di()->get(SecretDao::class)->isShare($userAuth->getUserId(), $model->secret_id)) {
+            throw new BusinessException(ErrorCode::PERMISSION_DENY);
+        }
+
+        if (! $model->isYuanShen()) {
+            throw new BusinessException(ErrorCode::CONTENT_NOT_YUAN_SHEN);
+        }
+
+        $user = di()->get(YsUserDao::class)->firstByContentId($model->id, true);
+
+        if (! di()->get(Redis::class)->set('lock:fresh-gacha:' . $user->id, '1', ['EX' => 3600, 'NX'])) {
+            throw new BusinessException(ErrorCode::YS_GACHA_FRESH_FAILED);
+        }
+
+        di()->get(YsGachaLogService::class)->load($user->id);
+
+        return true;
     }
 
     public function list(int $secretId, UserAuth $userAuth): ContentListSchema
@@ -151,7 +176,9 @@ class ContentService extends Service
         }
 
         if ($user) {
-            di()->get(YsGachaLogService::class)->load($user->id);
+            if (di()->get(Redis::class)->set('lock:fresh-gacha:' . $user->id, '1', ['EX' => 3600, 'NX'])) {
+                di()->get(YsGachaLogService::class)->load($user->id);
+            }
         }
 
         return true;

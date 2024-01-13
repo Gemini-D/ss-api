@@ -41,7 +41,7 @@ enum ContentType: int
             self::AUDIO,
             self::VIDEO,
             self::IMAGE,
-            self::YUAN_SHEN,
+            // self::YUAN_SHEN,
         ];
     }
 
