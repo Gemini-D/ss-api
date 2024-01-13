@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 8.0.32)
 # 数据库: secret_space
-# 生成时间: 2024-01-08 02:39:29 +0000
+# 生成时间: 2024-01-13 13:21:44 +0000
 # ************************************************************
 
 
@@ -55,6 +55,7 @@ CREATE TABLE `secret` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint unsigned NOT NULL COMMENT '用户 ID',
   `secret` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '密码',
+  `share_id` bigint unsigned NOT NULL DEFAULT '0' COMMENT '被分享的密码 ID',
   `created_at` datetime NOT NULL DEFAULT '2023-01-01 00:00:00',
   `updated_at` datetime NOT NULL DEFAULT '2023-01-01 00:00:00',
   PRIMARY KEY (`id`),
@@ -64,12 +65,12 @@ CREATE TABLE `secret` (
 LOCK TABLES `secret` WRITE;
 /*!40000 ALTER TABLE `secret` DISABLE KEYS */;
 
-INSERT INTO `secret` (`id`, `user_id`, `secret`, `created_at`, `updated_at`)
+INSERT INTO `secret` (`id`, `user_id`, `secret`, `share_id`, `created_at`, `updated_at`)
 VALUES
-	(1,186864216584192,'e9510081ac30ffa83f10b68cde1cac07','2023-12-30 17:08:44','2023-12-30 17:08:44'),
-	(10,186864216584192,'202cb962ac59075b964b07152d234b70','2023-12-30 20:59:02','2023-12-30 20:59:02'),
-	(12,186864216584192,'827ccb0eea8a706c4c34a16891f84e7b','2023-12-30 21:38:16','2023-12-30 21:38:16'),
-	(15,186864216584192,'81dc9bdb52d04dc20036dbd8313ed055','2024-01-07 08:44:23','2024-01-07 08:44:23');
+	(1,186864216584192,'e9510081ac30ffa83f10b68cde1cac07',0,'2023-12-30 17:08:44','2023-12-30 17:08:44'),
+	(10,186864216584192,'202cb962ac59075b964b07152d234b70',0,'2023-12-30 20:59:02','2023-12-30 20:59:02'),
+	(12,186864216584192,'827ccb0eea8a706c4c34a16891f84e7b',0,'2023-12-30 21:38:16','2023-12-30 21:38:16'),
+	(15,186864216584192,'81dc9bdb52d04dc20036dbd8313ed055',0,'2024-01-07 08:44:23','2024-01-07 08:44:23');
 
 /*!40000 ALTER TABLE `secret` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -94,6 +95,42 @@ VALUES
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# 转储表 ys_gacha_log
+# ------------------------------------------------------------
+
+CREATE TABLE `ys_gacha_log` (
+  `id` bigint unsigned NOT NULL,
+  `uid` bigint unsigned NOT NULL DEFAULT '0' COMMENT '原神 UID',
+  `gacha_type` int unsigned NOT NULL DEFAULT '0' COMMENT '祈愿类型',
+  `time` datetime NOT NULL DEFAULT '2023-01-01 00:00:00' COMMENT '抽卡时间',
+  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '角色or 武器名称',
+  `item_type` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '类型',
+  `rank_type` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '稀有度',
+  `created_at` datetime NOT NULL DEFAULT '2023-01-01 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '2023-01-01 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='原神抽卡记录';
+
+
+
+# 转储表 ys_user
+# ------------------------------------------------------------
+
+CREATE TABLE `ys_user` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `content_id` bigint unsigned NOT NULL DEFAULT '0' COMMENT '内容 ID',
+  `uid` bigint unsigned NOT NULL DEFAULT '0' COMMENT '原神 UID',
+  `mid` bigint unsigned NOT NULL DEFAULT '0' COMMENT '米游社 UID',
+  `stoken` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'SToken',
+  `auth_key` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'AuthKey',
+  `status` tinyint unsigned NOT NULL DEFAULT '0' COMMENT 'SToken 是否失效',
+  `created_at` datetime NOT NULL DEFAULT '2023-01-01 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '2023-01-01 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='原神账号';
+
 
 
 

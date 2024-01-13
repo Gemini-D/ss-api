@@ -347,8 +347,6 @@ class Mihoyo extends Service
     ])]
     public function getGachaLog(string $authkey, GachaType $gachaType, int|string $endId = 0)
     {
-        // https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog
-
         $client = new Client([
             'base_uri' => 'https://hk4e-api.mihoyo.com',
             'timeout' => 5,
