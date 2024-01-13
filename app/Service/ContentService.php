@@ -14,12 +14,14 @@ namespace App\Service;
 
 use App\Constants\ContentType;
 use App\Constants\ErrorCode;
+use App\Constants\GachaType;
 use App\Exception\BusinessException;
 use App\Model\Content;
 use App\Schema\ContentListSchema;
 use App\Schema\ContentSchema;
 use App\Service\Dao\ContentDao;
 use App\Service\Dao\SecretDao;
+use App\Service\Dao\YsUserDao;
 use App\Service\Formatter\ContentFormatter;
 use App\Service\SubService\Encrypter;
 use App\Service\SubService\UserAuth;
@@ -50,6 +52,24 @@ class ContentService extends Service
         }
 
         return new ContentSchema($model, true);
+    }
+
+    public function gacha(int $id, GachaType $type, UserAuth $userAuth): array
+    {
+        $userAuth->build();
+
+        $model = $this->dao->first($id, true);
+        if ($model->user_id !== $userAuth->getUserId() && ! di()->get(SecretDao::class)->isShare($userAuth->getUserId(), $model->secret_id)) {
+            throw new BusinessException(ErrorCode::PERMISSION_DENY);
+        }
+
+        if (! $model->isYuanShen()) {
+            throw new BusinessException(ErrorCode::CONTENT_NOT_YUAN_SHEN);
+        }
+
+        $user = di()->get(YsUserDao::class)->firstByContentId($model->id, true);
+
+        return di()->get(YsGachaLogService::class)->dashboard($user->uid, $type);
     }
 
     public function list(int $secretId, UserAuth $userAuth): ContentListSchema

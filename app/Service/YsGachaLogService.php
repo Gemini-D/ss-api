@@ -14,6 +14,7 @@ namespace App\Service;
 
 use App\Constants\GachaType;
 use App\Model\YsGachaLog;
+use App\Schema\YsGachaSchema;
 use App\Service\Dao\YsUserDao;
 use App\Service\SubService\Mihoyo;
 use Han\Utils\Service;
@@ -23,6 +24,38 @@ use Throwable;
 
 class YsGachaLogService extends Service
 {
+    public function dashboard(int $uid, GachaType $type): array
+    {
+        $ups = YsGachaLog::query()->where('uid', $uid)->where('gacha_type', $type)
+            ->where('rank_type', 5)
+            ->get();
+
+        $result = [];
+        $prev = new YsGachaLog();
+        $prev->id = 0;
+        $prev->name = '已垫';
+        $prev->item_type = '无';
+        $prev->rank_type = 5;
+        foreach ($ups as $up) {
+            $query = YsGachaLog::query()->where('uid', $uid)->where('gacha_type', $type);
+            if ($prev->id !== 0) {
+                $query->where('id', '<', $prev->id);
+            }
+
+            $num = $query->where('id', '>', $up->id)->where('rank_type', '<=', 4)->count();
+
+            $result[] = new YsGachaSchema($prev->name, $prev->item_type, $prev->rank_type, $num);
+
+            $prev = $up;
+        }
+
+        $num = YsGachaLog::query()->where('uid', $uid)->where('gacha_type', $type)->where('id', '<', $prev->id)->where('rank_type', '<=', 4)->count();
+
+        $result[] = new YsGachaSchema($prev->name, $prev->item_type, $prev->rank_type, $num);
+
+        return $result;
+    }
+
     #[AsyncQueueMessage]
     public function load(int $userId): void
     {
@@ -58,7 +91,11 @@ class YsGachaLogService extends Service
                                 break 2;
                             }
                         }
+
+                        sleep(1);
                     }
+
+                    sleep(5);
                 }
             } finally {
                 di()->get(Redis::class)->del($key);

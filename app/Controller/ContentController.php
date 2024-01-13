@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Constants\ContentType;
+use App\Constants\GachaType;
 use App\Schema\SavedSchema;
 use App\Service\ContentService;
 use App\Service\SubService\UserAuth;
@@ -82,5 +83,22 @@ class ContentController extends Controller
         return $this->response->success(
             ContentType::all()
         );
+    }
+
+    #[SA\Get('/content/gacha', summary: '抽卡汇总', tags: ['内容管理'])]
+    #[SA\RequestBody(content: new SA\JsonContent(properties: [
+        new SA\Property(property: 'id', description: '内容 ID', type: 'integer', rules: 'required|integer'),
+        new SA\Property(property: 'gacha_type', description: '祈愿类型', type: 'integer', rules: 'required|integer'),
+    ]))]
+    #[SA\Response(response: '200', content: new SA\JsonContent(type: 'array', items: new SA\Items(ref: '#/components/schemas/YsGachaSchema')))]
+    public function gacha(SwaggerRequest $request)
+    {
+        $id = (int) $request->input('id');
+        $gachaType = GachaType::from((int) $request->input('gacha_type'));
+        $userAuth = UserAuth::instance();
+
+        $result = $this->service->gacha($id, $gachaType, $userAuth);
+
+        return $this->response->success($result);
     }
 }

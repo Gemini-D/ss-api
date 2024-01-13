@@ -86,6 +86,11 @@ enum ErrorCode: int implements ErrorCodeInterface
     case CONTENT_CANNOT_SAVE_CAUSED_BY_SHARE = 1201;
 
     /**
+     * @Message("当前内容不是原神类型")
+     */
+    case CONTENT_NOT_YUAN_SHEN = 1202;
+
+    /**
      * @Message("原神信息不存在")
      */
     case YS_USER_NOT_EXIST = 1300;
