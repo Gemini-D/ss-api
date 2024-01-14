@@ -486,16 +486,16 @@
         },
         {
             "name": "gemini-d/plt-common",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gemini-D/plt-common.git",
-                "reference": "b2ebca6e9e8e03595fe6463166278834f1e6bdd1"
+                "reference": "986fe5eef43f0dd93ae9dcca56b04491a1244e96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gemini-D/plt-common/zipball/b2ebca6e9e8e03595fe6463166278834f1e6bdd1",
-                "reference": "b2ebca6e9e8e03595fe6463166278834f1e6bdd1",
+                "url": "https://api.github.com/repos/Gemini-D/plt-common/zipball/986fe5eef43f0dd93ae9dcca56b04491a1244e96",
+                "reference": "986fe5eef43f0dd93ae9dcca56b04491a1244e96",
                 "shasum": ""
             },
             "require": {
@@ -541,9 +541,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Gemini-D/plt-common/issues",
-                "source": "https://github.com/Gemini-D/plt-common/tree/v1.0.0"
+                "source": "https://github.com/Gemini-D/plt-common/tree/v1.0.1"
             },
-            "time": "2024-01-06T04:28:03+00:00"
+            "time": "2024-01-14T04:29:00+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -5386,16 +5386,16 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "4.9.0",
+            "version": "4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "dcbb1eed948fe036e6de8cdf0b125f5af1bc73fb"
+                "reference": "5afc6f823a2bb6ce8cf0db20fd39a7f3e762152c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/dcbb1eed948fe036e6de8cdf0b125f5af1bc73fb",
-                "reference": "dcbb1eed948fe036e6de8cdf0b125f5af1bc73fb",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/5afc6f823a2bb6ce8cf0db20fd39a7f3e762152c",
+                "reference": "5afc6f823a2bb6ce8cf0db20fd39a7f3e762152c",
                 "shasum": ""
             },
             "require": {
@@ -5404,7 +5404,7 @@
                 "guzzlehttp/guzzle": "^7.0",
                 "php": ">=8.0.2",
                 "symfony/http-foundation": "^6.0",
-                "symfony/psr-http-message-bridge": "^2.1"
+                "symfony/psr-http-message-bridge": "^2.1|^6.0"
             },
             "require-dev": {
                 "jetbrains/phpstorm-attributes": "^1.0",
@@ -5447,7 +5447,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/socialite/issues",
-                "source": "https://github.com/overtrue/socialite/tree/4.9.0"
+                "source": "https://github.com/overtrue/socialite/tree/4.10.0"
             },
             "funding": [
                 {
@@ -5455,7 +5455,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-09-01T11:01:34+00:00"
+            "time": "2024-01-12T09:40:43+00:00"
         },
         {
             "name": "php-di/phpdoc-reader",
@@ -7708,43 +7708,38 @@
         },
         {
             "name": "symfony/psr-http-message-bridge",
-            "version": "v2.3.1",
+            "version": "v6.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/psr-http-message-bridge.git",
-                "reference": "581ca6067eb62640de5ff08ee1ba6850a0ee472e"
+                "reference": "d32f5898f163266230182432b877ab7623ff252d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/581ca6067eb62640de5ff08ee1ba6850a0ee472e",
-                "reference": "581ca6067eb62640de5ff08ee1ba6850a0ee472e",
+                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/d32f5898f163266230182432b877ab7623ff252d",
+                "reference": "d32f5898f163266230182432b877ab7623ff252d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "psr/http-message": "^1.0 || ^2.0",
-                "symfony/deprecation-contracts": "^2.5 || ^3.0",
-                "symfony/http-foundation": "^5.4 || ^6.0"
+                "php": ">=8.1",
+                "psr/http-message": "^1.0|^2.0",
+                "symfony/http-foundation": "^5.4|^6.0|^7.0"
+            },
+            "conflict": {
+                "php-http/discovery": "<1.15",
+                "symfony/http-kernel": "<6.2"
             },
             "require-dev": {
                 "nyholm/psr7": "^1.1",
-                "psr/log": "^1.1 || ^2 || ^3",
-                "symfony/browser-kit": "^5.4 || ^6.0",
-                "symfony/config": "^5.4 || ^6.0",
-                "symfony/event-dispatcher": "^5.4 || ^6.0",
-                "symfony/framework-bundle": "^5.4 || ^6.0",
-                "symfony/http-kernel": "^5.4 || ^6.0",
-                "symfony/phpunit-bridge": "^6.2"
-            },
-            "suggest": {
-                "nyholm/psr7": "For a super lightweight PSR-7/17 implementation"
+                "php-http/discovery": "^1.15",
+                "psr/log": "^1.1.4|^2|^3",
+                "symfony/browser-kit": "^5.4|^6.0|^7.0",
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
+                "symfony/framework-bundle": "^6.2|^7.0",
+                "symfony/http-kernel": "^6.2|^7.0"
             },
             "type": "symfony-bridge",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.3-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bridge\\PsrHttpMessage\\": ""
@@ -7764,11 +7759,11 @@
                 },
                 {
                     "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "PSR HTTP message bridge",
-            "homepage": "http://symfony.com",
+            "homepage": "https://symfony.com",
             "keywords": [
                 "http",
                 "http-message",
@@ -7776,8 +7771,7 @@
                 "psr-7"
             ],
             "support": {
-                "issues": "https://github.com/symfony/psr-http-message-bridge/issues",
-                "source": "https://github.com/symfony/psr-http-message-bridge/tree/v2.3.1"
+                "source": "https://github.com/symfony/psr-http-message-bridge/tree/v6.4.2"
             },
             "funding": [
                 {
@@ -7793,7 +7787,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-26T11:53:26+00:00"
+            "time": "2023-12-28T07:55:26+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -8420,16 +8414,16 @@
         },
         {
             "name": "w7corp/easywechat",
-            "version": "6.13.1",
+            "version": "6.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/w7corp/easywechat.git",
-                "reference": "9f933f21009b7f34d71f1f71b8fce9a8edf9f8d2"
+                "reference": "5e13dca59419a62401aecb239e65627736e6bfd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/w7corp/easywechat/zipball/9f933f21009b7f34d71f1f71b8fce9a8edf9f8d2",
-                "reference": "9f933f21009b7f34d71f1f71b8fce9a8edf9f8d2",
+                "url": "https://api.github.com/repos/w7corp/easywechat/zipball/5e13dca59419a62401aecb239e65627736e6bfd0",
+                "reference": "5e13dca59419a62401aecb239e65627736e6bfd0",
                 "shasum": ""
             },
             "require": {
@@ -8450,7 +8444,7 @@
                 "symfony/http-foundation": "^5.4|^6.0",
                 "symfony/mime": "^5.4|^6.0",
                 "symfony/polyfill-php81": "^1.25",
-                "symfony/psr-http-message-bridge": "^2.1.2",
+                "symfony/psr-http-message-bridge": "^2.1.2|^6.4.0",
                 "thenorthmemory/xml": "^1.0"
             },
             "require-dev": {
@@ -8507,7 +8501,7 @@
             ],
             "support": {
                 "issues": "https://github.com/w7corp/easywechat/issues",
-                "source": "https://github.com/w7corp/easywechat/tree/6.13.1"
+                "source": "https://github.com/w7corp/easywechat/tree/6.14.0"
             },
             "funding": [
                 {
@@ -8515,7 +8509,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-30T14:21:07+00:00"
+            "time": "2024-01-12T15:51:35+00:00"
         },
         {
             "name": "zircote/swagger-php",
@@ -9737,16 +9731,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.5",
+            "version": "10.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ed21115d505b4b4f7dc7b5651464e19a2c7f7856"
+                "reference": "ab9a20b623b235165d24faa9d1da925cb54939c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ed21115d505b4b4f7dc7b5651464e19a2c7f7856",
-                "reference": "ed21115d505b4b4f7dc7b5651464e19a2c7f7856",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ab9a20b623b235165d24faa9d1da925cb54939c0",
+                "reference": "ab9a20b623b235165d24faa9d1da925cb54939c0",
                 "shasum": ""
             },
             "require": {
@@ -9818,7 +9812,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.5"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.6"
             },
             "funding": [
                 {
@@ -9834,7 +9828,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-27T15:13:52+00:00"
+            "time": "2024-01-13T12:49:56+00:00"
         },
         {
             "name": "sebastian/cli-parser",
