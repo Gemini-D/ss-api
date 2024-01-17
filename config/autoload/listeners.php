@@ -9,8 +9,12 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
+use Hyperf\Command\Listener\FailToHandleListener;
+use Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler;
+use Hyperf\RPCLogListener\RPCEventListener;
+
 return [
-    Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler::class,
-    Hyperf\Command\Listener\FailToHandleListener::class,
-    Hyperf\RPCLogListener\RPCEventListener::class,
+    ErrorExceptionHandler::class,
+    FailToHandleListener::class,
+    RPCEventListener::class,
 ];

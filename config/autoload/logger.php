@@ -9,20 +9,23 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-use App\Kernel\Log;
+use App\Kernel\Log\AppendRequestIdProcessor;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 
 return [
     'default' => [
         'handler' => [
-            'class' => Monolog\Handler\StreamHandler::class,
+            'class' => StreamHandler::class,
             'constructor' => [
-                // 'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
-                'stream' => 'php://output',
-                'level' => Monolog\Level::Info,
+                'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
+                // 'stream' => 'php://output',
+                'level' => Level::Info,
             ],
         ],
         'formatter' => [
-            'class' => Monolog\Formatter\LineFormatter::class,
+            'class' => LineFormatter::class,
             'constructor' => [
                 'format' => null,
                 'dateFormat' => 'Y-m-d H:i:s',
@@ -31,7 +34,7 @@ return [
         ],
         'processors' => [
             [
-                'class' => Log\AppendRequestIdProcessor::class,
+                'class' => AppendRequestIdProcessor::class,
             ],
         ],
     ],
