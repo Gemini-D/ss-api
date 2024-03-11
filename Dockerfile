@@ -6,7 +6,7 @@
 # @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
 
 FROM hyperf/hyperf:8.1-alpine-v3.18-swoole-slim
-LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT" app.name="ss-api"
+LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT" app.name="ss-api" app.group="Hyperf"
 
 ##
 # ---------- env settings ----------
