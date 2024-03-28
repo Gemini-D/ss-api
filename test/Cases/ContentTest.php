@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Cases;
 
+use App\Constants\ContentType;
 use App\Service\SubService\UserAuth;
 use HyperfTest\HttpTestCase;
 
@@ -26,6 +27,7 @@ class ContentTest extends HttpTestCase
         $res = $this->json('/content/save', [
             'id' => 1,
             'secret_id' => 1,
+            'type' => ContentType::TEXT->value,
             'title' => 'Hello',
             'content' => 'World',
         ], [
