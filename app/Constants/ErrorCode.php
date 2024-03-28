@@ -100,7 +100,7 @@ enum ErrorCode: int implements ErrorCodeInterface
      */
     case YS_GACHA_FRESH_FAILED = 1301;
 
-    public function getMessage(array $translate = null): string
+    public function getMessage(?array $translate = null): string
     {
         $arguments = [];
         if ($translate) {
