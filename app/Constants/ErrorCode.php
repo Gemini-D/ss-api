@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Constants;
 
 use Hyperf\Constants\Annotation\Constants;
+use Hyperf\Constants\Annotation\Message;
 use Hyperf\Constants\EnumConstantsTrait;
 
 #[Constants]
@@ -20,84 +21,52 @@ enum ErrorCode: int implements ErrorCodeInterface
 {
     use EnumConstantsTrait;
 
-    /**
-     * @Message("没有权限")
-     */
+    #[Message('没有权限')]
     case PERMISSION_DENY = 403;
 
-    /**
-     * @Message("Server Error")
-     */
+    #[Message('Server Error')]
     case SERVER_ERROR = 500;
 
-    /**
-     * @Message("Token 已失效")
-     */
+    #[Message('Token 已失效')]
     case TOKEN_INVALID = 700;
 
-    /**
-     * @Message("授权失败")
-     */
+    #[Message('授权失败')]
     case OAUTH_FAILED = 701;
 
-    /**
-     * @Message("密码已失效")
-     */
+    #[Message('密码已失效')]
     case SECRET_INVALID = 702;
 
-    /**
-     * @Message("访问米哈游服务器报错")
-     */
+    #[Message('访问米哈游服务器报错')]
     case REQUEST_MIHOYO_FAILED = 703;
 
-    /**
-     * @Message("米哈游验证码登录失败")
-     */
+    #[Message('米哈游验证码登录失败')]
     case REQUEST_MIHOYO_LOGIN_BY_MOBILE_CAPTCHA = 704;
 
-    /**
-     * @Message("参数错误")
-     */
+    #[Message('参数错误')]
     case PARAMS_INVALID = 1000;
 
-    /**
-     * @Message("用户不存在")
-     */
+    #[Message('用户不存在')]
     case USER_NOT_EXIST = 1001;
 
-    /**
-     * @Message("密码不存在")
-     */
+    #[Message('密码不存在')]
     case SECRET_NOT_EXIST = 1100;
 
-    /**
-     * @Message("密码已经存在")
-     */
+    #[Message('密码已经存在')]
     case SECRET_ALREADY_EXIST = 1101;
 
-    /**
-     * @Message("内容不存在")
-     */
+    #[Message('内容不存在')]
     case CONTENT_NOT_EXIST = 1200;
 
-    /**
-     * @Message("被分享的内容不允许修改")
-     */
+    #[Message('被分享的内容不允许修改')]
     case CONTENT_CANNOT_SAVE_CAUSED_BY_SHARE = 1201;
 
-    /**
-     * @Message("当前内容不是原神类型")
-     */
+    #[Message('当前内容不是原神类型')]
     case CONTENT_NOT_YUAN_SHEN = 1202;
 
-    /**
-     * @Message("原神信息不存在")
-     */
+    #[Message('原神信息不存在')]
     case YS_USER_NOT_EXIST = 1300;
 
-    /**
-     * @Message("祈愿记录一小时内只能刷新一次")
-     */
+    #[Message('祈愿记录一小时内只能刷新一次')]
     case YS_GACHA_FRESH_FAILED = 1301;
 
     public function getMessage(?array $translate = null): string
