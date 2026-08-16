@@ -44,9 +44,9 @@ class Content extends Model
      */
     protected array $casts = ['id' => 'integer', 'user_id' => 'integer', 'secret_id' => 'integer', 'type' => ContentType::class, 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 
-    public function getContent()
+    public function getContent(?string $secret = null)
     {
-        $secret = UserAuth::instance()->build()->getSecret();
+        $secret ??= UserAuth::instance()->build()->getSecret();
         return di()->get(Encrypter::class)->decrypt($this->content, $secret);
     }
 

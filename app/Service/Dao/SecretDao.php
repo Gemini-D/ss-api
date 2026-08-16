@@ -16,6 +16,7 @@ use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
 use App\Model\Secret;
 use Han\Utils\Service;
+use Hyperf\Database\Model\Collection;
 
 class SecretDao extends Service
 {
@@ -27,6 +28,14 @@ class SecretDao extends Service
         }
 
         return $model;
+    }
+
+    /**
+     * @return Collection<int, Secret>
+     */
+    public function findByUserId(int $useId): Collection
+    {
+        return Secret::query()->where('user_id', $useId)->get();
     }
 
     public function create(string $secret, int $userId): Secret
