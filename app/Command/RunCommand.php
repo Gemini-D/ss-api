@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Model\Secret;
 use App\Service\Dao\ContentDao;
 use App\Service\Dao\SecretDao;
 use Hyperf\Command\Annotation\Command;
@@ -39,7 +38,7 @@ class RunCommand extends HyperfCommand
 
         $secret = [];
 
-        $models = di()->get(SecretDao::class)->findByUserId($userId);
+        $models = di()->get(SecretDao::class)->findByUserId($userId)->getDictionary();
         foreach ($models as $model) {
             $secret[$model->id] = $model->id;
         }
@@ -48,11 +47,10 @@ class RunCommand extends HyperfCommand
 
         $contents = di()->get(ContentDao::class)->findBySecretId($id);
 
-        /** @var Secret $secret */
-        $secret = $models->get($id);
+        $secret = (string) $this->ask('请输入密码');
 
         foreach ($contents as $content) {
-            $this->output->writeln($content->getContent($secret->secret));
+            $this->output->writeln($content->getContent(md5('secret:' . $secret)));
         }
     }
 }
