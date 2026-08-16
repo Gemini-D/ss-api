@@ -12,9 +12,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Swow\Psr7\Message\ResponsePlusInterface;
+
 class IndexController extends Controller
 {
-    public function index()
+    public function index(): ResponsePlusInterface
     {
         return $this->response->success('Hello SS API');
     }

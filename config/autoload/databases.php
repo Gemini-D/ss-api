@@ -49,6 +49,7 @@ return [
                 'refresh_fillable' => true,
                 'table_mapping' => [],
                 'with_comments' => true,
+                'property_nullable' => false,
             ],
         ],
     ],

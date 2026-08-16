@@ -10,31 +10,34 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 use App\Kernel\Log\AppendRequestIdProcessor;
+use Hyperf\Logger\Handler\StreamHandler;
 use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\StreamHandler;
+use Monolog\Handler\StreamHandler as MonologStreamHandler;
 use Monolog\Level;
 
 return [
-    'default' => [
-        'handler' => [
-            'class' => StreamHandler::class,
-            'constructor' => [
-                'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
-                // 'stream' => 'php://output',
-                'level' => Level::Info,
+    'default' => 'default',
+    'channels' => [
+        'default' => [
+            'handler' => [
+                'class' => class_exists(StreamHandler::class) ? StreamHandler::class : MonologStreamHandler::class,
+                'constructor' => [
+                    'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
+                    'level' => Level::Info,
+                ],
             ],
-        ],
-        'formatter' => [
-            'class' => LineFormatter::class,
-            'constructor' => [
-                'format' => null,
-                'dateFormat' => 'Y-m-d H:i:s',
-                'allowInlineLineBreaks' => true,
+            'formatter' => [
+                'class' => LineFormatter::class,
+                'constructor' => [
+                    'format' => null,
+                    'dateFormat' => 'Y-m-d H:i:s',
+                    'allowInlineLineBreaks' => true,
+                ],
             ],
-        ],
-        'processors' => [
-            [
-                'class' => AppendRequestIdProcessor::class,
+            'processors' => [
+                [
+                    'class' => AppendRequestIdProcessor::class,
+                ],
             ],
         ],
     ],
